@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FormCraft Architecture</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --side: #1e293b;
+            --accent: #38bdf8;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            display: flex;
+            height: 100vh;
+        }
+
+        .a {
+            width: 400px;
+            background: var(--side);
+            border-right: 2px solid #334155;
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+        }
+
+        .b {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0b0f1a;
+            background-image: radial-gradient(#222 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .group {
+            padding: 20px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .group h3 {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .item {
+            margin-bottom: 10px;
+        }
+
+        .item label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .item input, .item select {
+            width: 100%;
+            padding: 8px;
+            background: #0f172a;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 4px;
+        }
+
+        #form-box {
+            width: 450px;
+            min-height: 200px;
+            background: white;
+            padding: 30px;
+            color: black;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        #main-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #38bdf8;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .tabs {
+            display: flex;
+            background: #111;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 12px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            border-bottom: 2px solid var(--accent);
+            background: #222;
+        }
+
+        .panel {
+            display: none;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        .code-box {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #000;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+        }
+
+        button.btn {
+            background: var(--accent);
+            border: none;
+            padding: 10px 20px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="a">
+        <div class="group">
+            <h1 style="font-size: 20px;">FormCraft</h1>
+        </div>
+
+        <div class="tabs">
+            <div class="tab active" id="t1">Design</div>
+            <div class="tab" id="t2">Content</div>
+            <div class="tab" id="t3">Advanced</div>
+        </div>
+
+        <div class="panel active" id="p1">
+            <div class="group">
+                <h3>Main Container</h3>
+                <div class="item">
+                    <label>Background Color</label>
+                    <input type="color" id="c1" value="#ffffff">
+                </div>
+                <div class="item">
+                    <label>Border Radius</label>
+                    <input type="range" id="c2" min="0" max="100" value="10">
+                </div>
+                <div class="item">
+                    <label>Padding Top</label>
+                    <input type="range" id="c3" min="0" max="100" value="30">
+                </div>
+                <div class="item">
+                    <label>Padding Bottom</label>
+                    <input type="range" id="c4" min="0" max="100" value="30">
+                </div>
+                <div class="item">
+                    <label>Padding Left</label>
+                    <input type="range" id="c5" min="0" max="100" value="30">
+                </div>
+                <div class="item">
+                    <label>Padding Right</label>
+                    <input type="range" id="c6" min="0" max="100" value="30">
+                </div>
+                <div class="item">
+                    <label>Border Width</label>
+                    <input type="range" id="c7" min="0" max="20" value="0">
+                </div>
+                <div class="item">
+                    <label>Border Color</label>
+                    <input type="color" id="c8" value="#000000">
+                </div>
+                <div class="item">
+                    <label>Border Style</label>
+                    <select id="c9">
+                        <option value="solid">Solid</option>
+                        <option value="dashed">Dashed</option>
+                        <option value="dotted">Dotted</option>
+                        <option value="double">Double</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="group">
+                <h3>Typography</h3>
+                <div class="item">
+                    <label>Title Text</label>
+                    <input type="text" id="c10" value="Register Now">
+                </div>
+                <div class="item">
+                    <label>Title Color</label>
+                    <input type="color" id="c11" value="#000000">
+                </div>
+                <div class="item">
+                    <label>Title Size</label>
+                    <input type="range" id="c12" min="10" max="100" value="24">
+                </div>
+                <div class="item">
+                    <label>Text Alignment</label>
+                    <select id="c13">
+                        <option value="left">Left</option>
+                        <option value="center">Center</option>
+                        <option value="right">Right</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label>Font Family</label>
+                    <select id="c14">
+                        <option value="sans-serif">Sans Serif</option>
+                        <option value="serif">Serif</option>
+                        <option value="monospace">Monospace</option>
+                        <option value="cursive">Cursive</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="p2">
+            <div class="group">
+                <h3>Form Elements</h3>
+                <div class="item">
+                    <label>Label Color</label>
+                    <input type="color" id="c15" value="#333333">
+                </div>
+                <div class="item">
+                    <label>Label Font Size</label>
+                    <input type="range" id="c16" min="8" max="30" value="14">
+                </div>
+                <div class="item">
+                    <label>Input Background</label>
+                    <input type="color" id="c17" value="#ffffff">
+                </div>
+                <div class="item">
+                    <label>Input Border Color</label>
+                    <input type="color" id="c18" value="#cccccc">
+                </div>
+                <div class="item">
+                    <label>Input Text Color</label>
+                    <input type="color" id="c19" value="#000000">
+                </div>
+                <div class="item">
+                    <label>Input Height</label>
+                    <input type="range" id="c20" min="20" max="80" value="40">
+                </div>
+            </div>
+
+            <div class="group">
+                <h3>Button Styling</h3>
+                <div class="item">
+                    <label>Button Text</label>
+                    <input type="text" id="c21" value="Submit">
+                </div>
+                <div class="item">
+                    <label>Button Background</label>
+                    <input type="color" id="c22" value="#38bdf8">
+                </div>
+                <div class="item">
+                    <label>Button Text Color</label>
+                    <input type="color" id="c23" value="#ffffff">
+                </div>
+                <div class="item">
+                    <label>Button Radius</label>
+                    <input type="range" id="c24" min="0" max="50" value="5">
+                </div>
+                <div class="item">
+                    <label>Button Height</label>
+                    <input type="range" id="c25" min="30" max="100" value="45">
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="p3">
+            <div class="group">
+                <h3>New Element Controls</h3>
+                <div class="item">
+                    <label>Label / Title</label>
+                    <input type="text" id="new-el-label" placeholder="Enter Label Name">
+                </div>
+                <div class="item">
+                    <label>Placeholder / Initial Data</label>
+                    <input type="text" id="new-el-data" placeholder="Enter Placeholder">
+                </div>
+                <div class="item">
+                    <label>Custom Text Color</label>
+                    <input type="color" id="new-el-color" value="#000000">
+                </div>
+                <div class="item">
+                    <label>Custom Font Size</label>
+                    <input type="range" id="new-el-size" min="8" max="50" value="14">
+                </div>
+                <div class="item">
+                    <label>Custom Bg Color</label>
+                    <input type="color" id="new-el-bg" value="#ffffff">
+                </div>
+                <button class="btn" id="add-field">Add Input Field</button>
+            </div>
+
+            <div class="group">
+                <h3>List Builder</h3>
+                <div class="item">
+                    <label>List Type</label>
+                    <select id="list-type">
+                        <option value="ul">Unordered (Bullets)</option>
+                        <option value="ol">Ordered (Numbers)</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label>List Item Text</label>
+                    <input type="text" id="list-item-text" placeholder="Item Name">
+                </div>
+                <button class="btn" id="add-list-item">Add Item to List</button>
+            </div>
+
+            <div class="group">
+                <h3>Global Effects</h3>
+                <div class="item">
+                    <label>Shadow Intensity</label>
+                    <input type="range" id="c26" min="0" max="50" value="10">
+                </div>
+                <div class="item">
+                    <label>Shadow Color</label>
+                    <input type="color" id="c27" value="#000000">
+                </div>
+                <div class="item">
+                    <label>Opacity</label>
+                    <input type="range" id="c28" min="0" max="100" value="100">
+                </div>
+                <div class="item">
+                    <label>Rotate Form (deg)</label>
+                    <input type="range" id="c29" min="-180" max="180" value="0">
+                </div>
+            </div>
+            <div class="group">
+                <button class="btn" style="background: #ef4444;" id="reset-all">Reset All</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="b">
+        <form id="form-box">
+            <h2 id="live-title" style="display: flex; flex-direction: row; justify-content: center;">UPDATE ME(Give Form Title)</h2>
+            <div id="field-list">
+                <div class="field">
+                    <label class="live-label">Name</label>
+                    <input type="text" class="live-input" placeholder="Name LastName">
+                </div>
+                <div class="field">
+                    <label class="live-label">Age</label>
+                    <input type="number" class="live-input" placeholder="12.6">
+                </div>
+            </div>
+            <div id="list-container"></div>
+            <button type="button" id="main-btn">Submit</button>
+        </form>
+    </div>
+
+    <div class="code-box">
+        <button class="btn" onclick="exportData()">Download Form HTML</button>
+    </div>
+
+    <script>
+        const box = document.getElementById('form-box');
+        const title = document.getElementById('live-title');
+        const btn = document.getElementById('main-btn');
+        const fields = document.getElementById('field-list');
+        const listContainer = document.getElementById('list-container');
+
+        document.getElementById('c1').oninput = function() { box.style.backgroundColor = this.value; };
+        document.getElementById('c2').oninput = function() { box.style.borderRadius = this.value + 'px'; };
+        document.getElementById('c3').oninput = function() { box.style.paddingTop = this.value + 'px'; };
+        document.getElementById('c4').oninput = function() { box.style.paddingBottom = this.value + 'px'; };
+        document.getElementById('c5').oninput = function() { box.style.paddingLeft = this.value + 'px'; };
+        document.getElementById('c6').oninput = function() { box.style.paddingRight = this.value + 'px'; };
+        document.getElementById('c7').oninput = function() { box.style.borderWidth = this.value + 'px'; };
+        document.getElementById('c8').oninput = function() { box.style.borderColor = this.value; };
+        document.getElementById('c9').onchange = function() { box.style.borderStyle = this.value; };
+        document.getElementById('c10').oninput = function() { title.innerText = this.value; };
+        document.getElementById('c11').oninput = function() { title.style.color = this.value; };
+        document.getElementById('c12').oninput = function() { title.style.fontSize = this.value + 'px'; };
+        document.getElementById('c13').onchange = function() { title.style.textAlign = this.value; };
+        document.getElementById('c14').onchange = function() { box.style.fontFamily = this.value; };
+
+        document.getElementById('c15').oninput = function() {
+            const ls = document.querySelectorAll('.live-label');
+            ls.forEach(l => l.style.color = this.value);
+        };
+
+        document.getElementById('c16').oninput = function() {
+            const ls = document.querySelectorAll('.live-label');
+            ls.forEach(l => l.style.fontSize = this.value + 'px');
+        };
+
+        document.getElementById('c17').oninput = function() {
+            const ins = document.querySelectorAll('.live-input');
+            ins.forEach(i => i.style.backgroundColor = this.value);
+        };
+
+        document.getElementById('c18').oninput = function() {
+            const ins = document.querySelectorAll('.live-input');
+            ins.forEach(i => i.style.borderColor = this.value);
+        };
+
+        document.getElementById('c19').oninput = function() {
+            const ins = document.querySelectorAll('.live-input');
+            ins.forEach(i => i.style.color = this.value);
+        };
+
+        document.getElementById('c20').oninput = function() {
+            const ins = document.querySelectorAll('.live-input');
+            ins.forEach(i => i.style.height = this.value + 'px');
+        };
+
+        document.getElementById('c21').oninput = function() { btn.innerText = this.value; };
+        document.getElementById('c22').oninput = function() { btn.style.backgroundColor = this.value; };
+        document.getElementById('c23').oninput = function() { btn.style.color = this.value; };
+        document.getElementById('c24').oninput = function() { btn.style.borderRadius = this.value + 'px'; };
+        document.getElementById('c25').oninput = function() { btn.style.height = this.value + 'px'; };
+
+        document.getElementById('c26').oninput = function() {
+            let s = this.value;
+            box.style.boxShadow = `0 ${s}px ${s*2}px rgba(0,0,0,0.5)`;
+        };
+
+        document.getElementById('c28').oninput = function() { box.style.opacity = this.value / 100; };
+        document.getElementById('c29').oninput = function() { box.style.transform = `rotate(${this.value}deg)`; };
+
+        document.getElementById('t1').onclick = function() {
+            document.getElementById('p1').classList.add('active');
+            document.getElementById('p2').classList.remove('active');
+            document.getElementById('p3').classList.remove('active');
+            this.classList.add('active');
+            document.getElementById('t2').classList.remove('active');
+            document.getElementById('t3').classList.remove('active');
+        };
+
+        document.getElementById('t2').onclick = function() {
+            document.getElementById('p2').classList.add('active');
+            document.getElementById('p1').classList.remove('active');
+            document.getElementById('p3').classList.remove('active');
+            this.classList.add('active');
+            document.getElementById('t1').classList.remove('active');
+            document.getElementById('t3').classList.remove('active');
+        };
+
+        document.getElementById('t3').onclick = function() {
+            document.getElementById('p3').classList.add('active');
+            document.getElementById('p1').classList.remove('active');
+            document.getElementById('p2').classList.remove('active');
+            this.classList.add('active');
+            document.getElementById('t1').classList.remove('active');
+            document.getElementById('t2').classList.remove('active');
+        };
+
+        document.getElementById('add-field').onclick = function() {
+            const labelVal = document.getElementById('new-el-label').value || 'New Field';
+            const dataVal = document.getElementById('new-el-data').value || 'Type here...';
+            const colorVal = document.getElementById('new-el-color').value;
+            const sizeVal = document.getElementById('new-el-size').value;
+            const bgVal = document.getElementById('new-el-bg').value;
+
+            const newDiv = document.createElement('div');
+            newDiv.className = 'field';
+            
+            const newLabel = document.createElement('label');
+            newLabel.className = 'live-label';
+            newLabel.innerText = labelVal;
+            newLabel.style.color = colorVal;
+            newLabel.style.fontSize = sizeVal + 'px';
+            
+            const newInput = document.createElement('input');
+            newInput.className = 'live-input';
+            newInput.placeholder = dataVal;
+            newInput.style.backgroundColor = bgVal;
+            newInput.style.color = colorVal;
+            
+            newDiv.appendChild(newLabel);
+            newDiv.appendChild(newInput);
+            fields.appendChild(newDiv);
+        };
+
+        document.getElementById('add-list-item').onclick = function() {
+            const type = document.getElementById('list-type').value;
+            const text = document.getElementById('list-item-text').value || 'Item';
+            const colorVal = document.getElementById('new-el-color').value;
+            const sizeVal = document.getElementById('new-el-size').value;
+
+            let list = listContainer.querySelector(type);
+            if (!list) {
+                listContainer.innerHTML = ''; 
+                list = document.createElement(type);
+                listContainer.appendChild(list);
+            }
+            
+            const li = document.createElement('li');
+            li.innerText = text;
+            li.style.color = colorVal;
+            li.style.fontSize = sizeVal + 'px';
+            list.appendChild(li);
+        };
+
+        document.getElementById('reset-all').onclick = function() {
+            window.location.reload();
+        };
+
+        function exportData() {
+            const html = box.outerHTML;
+            const blob = new Blob([html], {type: 'text/html'});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'form.html';
+            link.click();
+        }
+
+        const extraGroup = document.createElement('div');
+        extraGroup.className = 'group';
+        extraGroup.innerHTML = '<h3>Advanced Spacing</h3>';
+        const m1 = document.createElement('div');
+        m1.className = 'item';
+        m1.innerHTML = '<label>Margin Top</label><input type="range" id="m1" min="0" max="100" value="0">';
+        extraGroup.appendChild(m1);
+        const m2 = document.createElement('div');
+        m2.className = 'item';
+        m2.innerHTML = '<label>Margin Bottom</label><input type="range" id="m2" min="0" max="100" value="0">';
+        extraGroup.appendChild(m2);
+        document.getElementById('p1').appendChild(extraGroup);
+        document.getElementById('m1').oninput = function() { box.style.marginTop = this.value + 'px'; };
+        document.getElementById('m2').oninput = function() { box.style.marginBottom = this.value + 'px'; };
+
+        const typoGroup = document.createElement('div');
+        typoGroup.className = 'group';
+        typoGroup.innerHTML = '<h3>Deep Typography</h3>';
+        const d1 = document.createElement('div');
+        d1.className = 'item';
+        d1.innerHTML = '<label>Letter Spacing</label><input type="range" id="d1" min="0" max="10" value="0">';
+        typoGroup.appendChild(d1);
+        const d2 = document.createElement('div');
+        d2.className = 'item';
+        d2.innerHTML = '<label>Line Height</label><input type="range" id="d2" min="1" max="3" step="0.1" value="1.2">';
+        typoGroup.appendChild(d2);
+        document.getElementById('p1').appendChild(typoGroup);
+        document.getElementById('d1').oninput = function() { box.style.letterSpacing = this.value + 'px'; };
+        document.getElementById('d2').oninput = function() { box.style.lineHeight = this.value; };
+
+        const fieldExtra = document.createElement('div');
+        fieldExtra.className = 'group';
+        fieldExtra.innerHTML = '<h3>Input Advanced</h3>';
+        const f1 = document.createElement('div');
+        f1.className = 'item';
+        f1.innerHTML = '<label>Input Padding</label><input type="range" id="f1" min="0" max="30" value="10">';
+        fieldExtra.appendChild(f1);
+        document.getElementById('p2').appendChild(fieldExtra);
+        document.getElementById('f1').oninput = function() {
+            const ins = document.querySelectorAll('.live-input');
+            ins.forEach(i => i.style.padding = this.value + 'px');
+        };
+
+        document.body.addEventListener('click', function(e) {
+            if(e.target.classList.contains('live-label')) {
+                const newText = prompt("Enter new label text:");
+                if(newText) e.target.innerText = newText;
+            }
+        });
+
+        const footer = document.createElement('div');
+        footer.style.padding = '20px';
+        footer.style.fontSize = '10px';
+        footer.innerText = 'FORMCRAFT V1.0 - BUILD 2024';
+        document.querySelector('.a').appendChild(footer);
+
+        let formtitle = document.querySelector("#live-title");
+
+        formtitle.addEventListener("click",()=>{
+            let val=prompt("Enter Title");
+            formtitle.innerText=val;
+
+        });
+
+    </script>
+</body>
+</html>
