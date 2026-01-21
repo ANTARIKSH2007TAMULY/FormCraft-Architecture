@@ -36,6 +36,11 @@
     overflow-y: auto; 
 }
 
+#form-box {
+    margin-bottom: 40px;
+}
+
+
 
         .group {
             padding: 20px;
