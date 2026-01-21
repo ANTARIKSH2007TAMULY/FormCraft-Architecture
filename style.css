@@ -27,12 +27,13 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     padding: 40px 20px;
     background-color: #0b0f1a;
     background-image: radial-gradient(#222 1px, transparent 1px);
     background-size: 20px 20px;
+           gap: 30px;            
+    overflow-y: auto; 
 }
 
 
