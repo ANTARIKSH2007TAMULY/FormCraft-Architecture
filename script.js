@@ -219,7 +219,7 @@
         const footer = document.createElement('div');
         footer.style.padding = '20px';
         footer.style.fontSize = '10px';
-        footer.innerText = 'FORMCRAFT V1.0 - BUILD 2026';
+        footer.innerText = 'FORMCRAFT V1.0 - BUILD 2026 (DESKTOP VERSION)';
         document.querySelector('.a').appendChild(footer);
 
         let formtitle = document.querySelector("#live-title");
