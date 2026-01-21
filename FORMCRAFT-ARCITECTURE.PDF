@@ -1,0 +1,211 @@
+# **FORMCRAFT ARCHITECTURE**
+
+### **Visual Form Builder – User Instructions**
+
+---
+
+## **Overview**
+
+**FormCraft Architecture** is a visual, no-code form builder that allows users to design, customize, organize, and export HTML forms in real time.
+All changes are instantly reflected in the live preview, making form creation fast, flexible, and intuitive.
+
+You can export your finished form as a standalone HTML file and use it on any website.
+
+---
+
+## **Application Layout**
+
+### **Left Panel – Control Panel**
+
+The control panel contains all customization tools, grouped into tabs:
+
+* **Design**
+* **Content**
+* **Advanced**
+
+Each tab focuses on a specific part of the form-building process.
+
+---
+
+### **Right Panel – Live Preview**
+
+This area displays your form exactly as it will appear to users.
+All changes made in the control panel update instantly here.
+
+---
+
+### **Bottom Action**
+
+* **Download Form HTML**
+  Exports your completed form as a downloadable HTML file.
+
+---
+
+## **Tabs & Features**
+
+---
+
+## **1. Design Tab**
+
+Used to control the **overall appearance** of the form.
+
+### **Main Container Settings**
+
+* Background color
+* Border radius
+* Padding (top, bottom, left, right)
+* Border width, color, and style
+* Margin (top and bottom)
+
+These options define the structure and spacing of the form.
+
+---
+
+### **Typography Controls**
+
+* Edit the form title text
+* Change title color
+* Adjust title font size
+* Set text alignment (left, center, right)
+* Choose font family
+
+**Tip:**
+Click directly on the form title in the preview to rename it instantly.
+
+---
+
+## **2. Content Tab**
+
+Used to style **form fields and buttons**.
+
+---
+
+### **Form Element Styling**
+
+* Label color
+* Label font size
+* Input background color
+* Input border color
+* Input text color
+* Input height
+* Input padding (advanced)
+
+All settings apply globally to every input field.
+
+---
+
+### **Button Styling**
+
+* Button text
+* Button background color
+* Button text color
+* Button height
+* Button border radius
+
+Changes are applied instantly in the preview.
+
+---
+
+## **3. Advanced Tab**
+
+Used to **add new elements** and apply advanced effects.
+
+---
+
+### **Add Input Field**
+
+1. Enter the label text
+2. Enter placeholder text
+3. Choose text color
+4. Set font size
+5. Choose background color
+6. Click **Add Input Field**
+
+A new input field will appear immediately in the form.
+
+---
+
+### **Add Header (H3)**
+
+*(Use once only)*
+
+1. Enter header text
+2. Choose header color
+3. Set header font size
+4. Click **Add Header 3**
+
+Useful for dividing the form into sections.
+
+---
+
+### **List Builder**
+
+1. Select list type:
+
+   * Unordered (bullets)
+   * Ordered (numbers)
+2. Enter list item text
+3. Click **Add Item to List**
+
+Items will be added dynamically to the form.
+
+---
+
+## **Global Effects**
+
+Apply visual effects to the entire form:
+
+* Shadow intensity
+* Opacity
+* Form rotation (degrees)
+
+These effects help create modern or creative layouts.
+
+---
+
+## **Live Editing Features**
+
+* Click any label to rename it
+* Click the form title to edit it
+* All edits update instantly without reloading
+
+---
+
+## **Feedback Section**
+
+* Users can submit feedback using the feedback input
+* Feedback is stored locally in the browser
+* Feedback persists after page reloads
+
+---
+
+## **Reset Function**
+
+* Click **Reset All**
+* Reloads the page and clears all changes
+
+**Warning:** This action cannot be undone.
+
+---
+
+## **Exporting Your Form**
+
+1. Click **Download Form HTML**
+2. A file named `form.html` will download
+3. The file contains your fully styled form
+4. Open it in any browser or embed it into your website
+
+---
+
+## **Recommended Workflow**
+
+1. Start with layout and styling (Design tab)
+2. Customize inputs and buttons (Content tab)
+3. Add elements and effects (Advanced tab)
+4. Review the live preview
+5. Export the form when finished
+---
+## **Version Information**
+
+**FormCraft V1.0** **Build 2026**
+
