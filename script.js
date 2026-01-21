@@ -201,7 +201,7 @@
         fieldExtra.innerHTML = '<h3>Input Advanced</h3>';
         const f1 = document.createElement('div');
         f1.className = 'item';
-        f1.innerHTML = '<label>Input Padding</label><input type="range" id="f1" min="0" max="14" value="10">';
+        f1.innerHTML = '<label>Input Padding</label><input type="range" id="f1" min="0" max="13" value="10">';
         fieldExtra.appendChild(f1);
         document.getElementById('p2').appendChild(fieldExtra);
         document.getElementById('f1').oninput = function() {
