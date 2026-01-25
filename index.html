@@ -1,7 +1,3 @@
-                                    <!-- This CODE IS ONLY FOR DESKTOP VIEW(OTHER INETRFACES MIGHT NOT SUPOORT -->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +18,7 @@
             <div class="tab" id="t3">Advanced</div>
         </div>
 
+        <!-- PANEL 1 -->
         <div class="panel active" id="p1">
             <div class="group">
                 <h3>Main Container</h3>
@@ -102,6 +99,7 @@
             </div>
         </div>
 
+        <!-- PANEL 2 -->
         <div class="panel" id="p2">
             <div class="group">
                 <h3>Form Elements</h3>
@@ -156,6 +154,7 @@
             </div>
         </div>
 
+        <!-- PANEL 3 -->
         <div class="panel" id="p3">
             <div class="group">
                 <h3>New Element Controls</h3>
@@ -183,21 +182,21 @@
             </div>
 
             <div class="group">
-                <h3>Header Builder(use once only)</h3>
-                 <div class="item">
+                <h3>Header Builder</h3>
+                <div class="item">
                     <label>Header 3 Text</label>
-                     <input type="text" id="h3-text" placeholder="Sub-heading text">
+                    <input type="text" id="h3-text" placeholder="Sub-heading text">
                 </div>
                 <div class="item">
-                <label>Header Color</label>
-               <input type="color" id="h3-color" value="#333333">
-                 </div>
-              <div class="item">
-              <label>Header Size</label>
-               <input type="range" id="h3-size" min="12" max="60" value="20">
-        </div>
-        <button class="btn" id="add-h3">Add Header 3</button>
-    </div>
+                    <label>Header Color</label>
+                    <input type="color" id="h3-color" value="#333333">
+                </div>
+                <div class="item">
+                    <label>Header Size</label>
+                    <input type="range" id="h3-size" min="12" max="60" value="20">
+                </div>
+                <button class="btn" id="add-h3">Add Header 3</button>
+            </div>
 
             <div class="group">
                 <h3>List Builder</h3>
@@ -242,71 +241,43 @@
 
     <div class="b">
         <div class="form-wrapper">
-         <div class="form-info-top" style="margin-bottom: 105px;">
-            <div class="info-title"><span style="text-decoration: underline; text-decoration-thickness: 2px; font-size: 30px;  ">
-                WELCOME TO FORMCRAFT ARCHITECTURE
-             </span>
+            <div class="form-info-top">
+                <div class="info-title">
+                    <span>WELCOME TO FORMCRAFT ARCHITECTURE</span>
+                </div>
+                <div class="info-subtitle">
+                    <span>USE ME TO STYLE AND ORGANIZE YOUR FORM</span>
+                </div>
             </div>
-            <div class="info-subtitle">
-                <span style="text-decoration: underline; text-decoration-thickness: 2px; font-size: 20px;">
-                USE ME TO STYLE AND ORGANIZE YOUR FORM
-                </span>
-            </div>
-        </div>
             
-        <form id="form-box" style="margin-bottom: 75px;">
-            <h2 id="live-title" style="display: flex; flex-direction: row; justify-content: center;">CLICK ME(Give Form Title)</h2>
-            <div id="field-list">
-                <div class="field">
-                    <label class="live-label">Name</label>
-                    <input type="text" class="live-input" placeholder="Name LastName">
+            <form id="form-box">
+                <h2 id="live-title">CLICK ME(Give Form Title)</h2>
+                <div id="field-list">
+                    <div class="field">
+                        <label class="live-label">Name</label>
+                        <input type="text" class="live-input" placeholder="Name LastName">
+                    </div>
+                    <div class="field">
+                        <label class="live-label">Age</label>
+                        <input type="number" class="live-input" placeholder="12.6">
+                    </div>
                 </div>
-                <div class="field">
-                    <label class="live-label">Age</label>
-                    <input type="number" class="live-input" placeholder="12.6">
-                </div>
+                <div id="list-container"></div>
+                <div id="form-errors" style="color:red; font-size:13px; margin-bottom:10px;"></div>
+
+                <button type="button" id="main-btn">Submit</button>
+            </form>
+
+            <div id="feedback-section">
+                <h3>Feedback For Improvements:</h3>
+                <input type="text" id="feedback-input" placeholder="Write your feedback here...">
+                <button id="feedback-btn">Submit Feedback</button>
+                <div id="feedback-list"></div>
             </div>
-            <div id="list-container"></div>
-            <button type="button" id="main-btn">Submit</button>
-        </form>
-        <div id="feedback-section" style="margin-top:40px; width:100%; max-width:700px; flex-shrink: 0;">
-    <h3 style="color:white; margin-bottom:10px;">Feedback For Improvements:</h3>
 
-    <input 
-        type="text" 
-        id="feedback-input" 
-        placeholder="Write your feedback here..." 
-        style="
-            width:100%;
-            padding:12px;
-            border-radius:6px;
-            border:1px solid #444;
-            margin-bottom:10px;
-        "
-    >
-
-    <button 
-        id="feedback-btn" 
-        style="
-            padding:10px 20px;
-            border:none;
-            border-radius:6px;
-            background:#38bdf8;
-            font-weight:bold;
-            cursor:pointer;
-        "
-    >
-        Submit Feedback
-    </button>
-
-    <div id="feedback-list" style="margin-top:15px; color:white;"></div>
-</div>
-
-         <div class="form-info-bottom" >
-            <a href="FORMCRAFT-ARCHITECTURE.HTML" target="_blank" style="font-size: 15px;">
-                CLICK ME TO VIEW HOW TO USE THE FORMCRAFT ARCHITECTURE
-            </a>
-        </div>
+            <div class="form-info-bottom">
+                <a href="FORMCRAFT-ARCHITECTURE.HTML" target="_blank">CLICK ME TO VIEW HOW TO USE THE FORMCRAFT ARCHITECTURE</a>
+            </div>
         </div>
     </div>
 
@@ -314,6 +285,6 @@
         <button class="btn" onclick="exportData()">Download Form HTML</button>
     </div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
