@@ -4,9 +4,6 @@ const btn = document.getElementById("main-btn");
 const fields = document.getElementById("field-list");
 const listContainer = document.getElementById("list-container");
 const errorBox = document.getElementById("form-errors");
-const appState = {
-    fields: []
-};
 
 
 box.style.transition = "all 0.4s ease";
@@ -196,14 +193,7 @@ document.getElementById("add-field").onclick = function () {
     newInput.style.backgroundColor = bgVal;
     newInput.style.color = colorVal;
 
-    appState.fields.push({
-    label: labelVal,
-    placeholder: dataVal,
-    color: colorVal,
-    size: sizeVal,
-    bg: bgVal
-});
-
+   
 
     newDiv.appendChild(newLabel);
     newDiv.appendChild(newInput);
